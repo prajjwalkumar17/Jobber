@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_jobsplash1.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_splash_frame.xml" value="0.2225" />
-        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_splash.xml" value="0.38697916666666665" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_splash.xml" value="0.33" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_splash1.xml" value="0.24947916666666667" />
       </map>
     </option>
   </component>

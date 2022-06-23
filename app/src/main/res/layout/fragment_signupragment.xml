@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:text="Rgistrartion 👍"
+            android:text="Registration 👍"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -57,28 +57,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
+        app:layout_constraintBottom_toTopOf="@+id/loginbot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginHorizontal="30dp"
             android:background="@drawable/outline_square_grey"
             android:drawableLeft="@drawable/ic_user"
+            android:textColor="@color/master_med"
             android:hint="   Full Name"
             android:padding="15dp"
             android:textColorHint="@color/Boundary"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="152dp" />
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/master_med"
             android:background="@drawable/outline_square_grey"
             android:drawableLeft="@drawable/icon_mail_outline_1"
             android:hint="   E-mail"
@@ -86,8 +90,24 @@
             android:textColorHint="@color/Boundary"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="152dp" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/role"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="30dp"
+            android:textColor="@color/master_med"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/outline_square_grey"
+            android:drawableLeft="@drawable/ic_stair"
+            android:hint="   Role (User,Recruiter)"
+            android:padding="15dp"
+            android:textColorHint="@color/Boundary"
+            tools:layout_editor_absoluteX="39dp"
+            tools:layout_editor_absoluteY="152dp" />
+
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginHorizontal="30dp"
@@ -95,16 +115,19 @@
             android:background="@drawable/outline_square_grey"
             android:drawableStart="@drawable/icon_password"
             android:hint="   Password"
+            android:textColor="@color/master_med"
             android:drawableEnd="@drawable/ic_eye"
             android:padding="15dp"
             android:textColorHint="@color/Boundary"
             tools:layout_editor_absoluteX="39dp"
             tools:layout_editor_absoluteY="152dp" />
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/cnfpassword"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/master_med"
             android:background="@drawable/outline_square_grey"
             android:drawableStart="@drawable/icon_password"
             android:hint="   Confirm Password"
@@ -116,7 +139,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/loginbot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -135,7 +158,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginbot"
         tools:layout_editor_absoluteX="0dp">
 
         <ImageView

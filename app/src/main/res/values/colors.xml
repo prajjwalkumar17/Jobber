@@ -3,7 +3,12 @@
 
 
     <color name="master_dark">#356899</color>
+    <color name="master_med">#2C557D</color>
     <color name="master_light">#95969D</color>
+    <color name="master_darker">#193AE9</color>
+    <color name="Transparent">#00000000</color>
+    <color name="Background">#FAFAFD</color>
+    <color name="Boundary">#0D0D26</color>
 
 
     <color name="purple_200">#FFBB86FC</color>

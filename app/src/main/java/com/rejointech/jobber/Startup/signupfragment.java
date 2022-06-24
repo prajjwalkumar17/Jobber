@@ -1,6 +1,8 @@
 package com.rejointech.jobber.Startup;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rejointech.jobber.APICall.APICall;
+import com.rejointech.jobber.Containers.HomeContainer;
 import com.rejointech.jobber.R;
 import com.rejointech.jobber.Utils.CommonMethods;
 import com.rejointech.jobber.Utils.Constants;
@@ -26,7 +29,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class signupragment extends Fragment {
+public class signupfragment extends Fragment {
 
     AppCompatEditText name,email,password,cnfpassword,role;
     TextView bot_login;
@@ -107,7 +110,8 @@ public class signupragment extends Fragment {
                         try {
                             JSONObject myres = new JSONObject(myresponse);
                             String token=myres.getString("token").toString();
-                            CommonMethods.LOGthesite(Constants.LOG, token);
+                            savedataToPrefs(token);
+//                            CommonMethods.LOGthesite(Constants.LOG, token);
                         }catch (Exception e){
                             CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
                         }
@@ -116,5 +120,12 @@ public class signupragment extends Fragment {
                 });
             }
         });
+    }
+    private void savedataToPrefs(String token) {
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(Constants.TOKENPREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constants.TOKEN, token);
+        editor.apply();
+        startActivity(new Intent(getActivity(), HomeContainer.class));
     }
 }

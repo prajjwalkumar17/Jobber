@@ -1,7 +1,7 @@
 package com.rejointech.jobber.Utils;
 
 public class Constants {
-    public static final int SPLASH_TIMEOUT=3000;
+    public static final int SPLASH_TIMEOUT=10;
     public static final int URL_TIMEOUT = 20;
     public static String LOG = "###-----------LOG IS HEre BIG ONE-------------------###############";
 
@@ -17,4 +17,7 @@ public class Constants {
     public static final String SIGNUPBODY_PASSWORD = "Password";
     public static final String SIGNUPBODY_CNFPASSWORD = "Password_confirm";
     public static final String SIGNUPBODY_ROLE = "Role";
+    //SHAREDPREF
+    public static final String TOKENPREF = "TOKENPREF";
+    public static final String TOKEN = "TOKEN";
 }

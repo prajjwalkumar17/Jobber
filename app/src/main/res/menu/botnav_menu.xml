@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/botnav_menu_home"
+        android:icon="@drawable/ic_bot_home"
+        android:iconTint="@color/black"
+        android:title="" />
+    <item
+        android:id="@+id/botnav_menu_Message"
+        android:icon="@drawable/ic_bot_message"
+        android:title="" />
+
+
+    <item
+        android:id="@+id/nully"
+        android:title="" />
+    <item
+        android:id="@+id/botnav_menu_Bookmarks"
+        android:icon="@drawable/ic_bot_bookmark"
+        android:title="" />
+
+
+    <item
+        android:id="@+id/botnav_menu_Categories"
+        android:icon="@drawable/ic_bot_cat"
+        android:title="" />
+
+</menu>

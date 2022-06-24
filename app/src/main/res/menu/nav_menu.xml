@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_menu_personalinfo"
+        android:icon="@drawable/ic_persinfo"
+        android:menuCategory="secondary"
+        android:title="Personal Info" />
+    <item
+        android:id="@+id/nav_menu_applications"
+        android:icon="@drawable/ic_applications"
+        android:iconTint="#ED0000"
+        android:menuCategory="secondary"
+        android:title="Applications" />
+    <item
+        android:id="@+id/nav_menu_resumes"
+        android:iconTint="@color/Grey"
+
+        android:icon="@drawable/ic_resumes"
+        android:menuCategory="secondary"
+        android:title="Resumes" />
+    <item
+        android:id="@+id/nav_menu_bookmarks"
+        android:icon="@drawable/ic_bookmarks"
+        android:menuCategory="secondary"
+        android:iconTint="@color/Grey"
+
+        android:title="My Bookmarks" />
+    <item
+        android:id="@+id/nav_menu_settings"
+        android:iconTint="@color/Grey"
+
+        android:icon="@drawable/ic_settings"
+        android:menuCategory="secondary"
+        android:title="Settings" />
+
+
+    <item
+        android:id="@+id/nav_menu_Logout"
+        android:iconTint="@color/Grey"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_logout"
+        android:title="Logout" />
+
+
+    <!--    </group>-->
+    <!--    <group android:checkableBehavior="single">-->
+    <!--        <item-->
+    <!--            android:menuCategory="secondary"-->
+    <!--            android:title="Social Handles">-->
+    <!--            <menu>-->
+    <!--                <item-->
+    <!--                    android:id="@+id/nav_menu_Instagram"-->
+    <!--                    android:title="Instagram" />-->
+    <!--                <item-->
+    <!--                    android:id="@+id/nav_menu_Youtube"-->
+    <!--                    android:title="Youtube" />-->
+    <!--            </menu>-->
+
+
+    <!--        </item>-->
+        </group>
+
+</menu>

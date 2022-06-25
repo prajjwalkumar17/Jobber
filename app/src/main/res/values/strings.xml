@@ -2,4 +2,14 @@
     <string name="app_name">Jobber</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="JOBSfeaturedJob_status">status</string>
+    <string name="JOBSfeaturedJob_noofresults">results</string>
+    <string name="JOBSfeaturedJob_realarray">featuredJobs</string>
+    <string name="JOBSfeaturedJob_compname">Company_name</string>
+    <string name="JOBSfeaturedJob_loc">Location</string>
+    <string name="JOBSfeaturedJob_jobROle">Job_role</string>
+    <string name="JOBSfeaturedJob_type">Job_type</string>
+    <string name="JOBSfeaturedJob_duration">Duration</string>
+    <string name="JOBSfeaturedJob_salary">Salary</string>
+    <string name="JOBSfeaturedJob_expreq">Experience_required</string>
 </resources>

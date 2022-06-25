@@ -54,6 +54,16 @@ public class APICall {
                 .addFormDataPart(Constants.SIGNUPBODY_PASSWORD,password)
                 .build();
     }
+    public static Request get4featuredJobs(String url){
+        return new Request.Builder()
+                .url(url)
+                .build();
+    }
+    public static Request get4allJobs(String url){
+        return new Request.Builder()
+                .url(url)
+                .build();
+    }
 
 }
 

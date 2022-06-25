@@ -151,21 +151,19 @@
             android:layout_marginVertical="10dp"
             android:divider="@drawable/divider_lin_hor"
             android:orientation="horizontal"
-            android:paddingVertical="10dp"
             android:paddingHorizontal="10dp"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginStart="30dp"
             android:gravity="center"
             android:showDividers="middle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rec_rel">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommendedJobsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
-            <include layout="@layout/recycler_home_recommended" />
-
-            <include layout="@layout/recycler_home_recommended" />
-            <include layout="@layout/recycler_home_recommended" />
-            <include layout="@layout/recycler_home_recommended" />
-        </LinearLayout>
+    </LinearLayout>
         <RelativeLayout
             android:id="@+id/rec_pop"
             android:layout_width="match_parent"

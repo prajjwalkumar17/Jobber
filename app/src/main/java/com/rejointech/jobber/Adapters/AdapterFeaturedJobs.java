@@ -65,8 +65,6 @@ public class AdapterFeaturedJobs extends RecyclerView.Adapter<AdapterFeaturedJob
             String Duration = realres.optString(thisContext.getString(R.string.JOBSfeaturedJob_duration));
             String Salary = realres.optString(thisContext.getString(R.string.JOBSfeaturedJob_salary));
             String Experience_required = realres.optString(thisContext.getString(R.string.JOBSfeaturedJob_expreq));
-            CommonMethods.LOGthesite(Constants.LOG, Salary + "  /n" + Job_type + "  /n" + Duration + "  /n"
-                    + Experience_required + "  /n");
   /*          String id = realres.optString("_id");
             String About_company = realres.optString("About_company");
             String Application_deadline = realres.optString("Application_deadline");

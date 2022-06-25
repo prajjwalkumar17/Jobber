@@ -17,9 +17,9 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/rec_rec_img"
             android:layout_width="90dp"
-            android:layout_centerHorizontal="true"
             android:layout_height="90dp"
-            android:src="@drawable/ic_fb"/>
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_fb" />
 
         <LinearLayout
             android:id="@+id/linlyt"
@@ -30,9 +30,11 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/recyc_rec_jobRole"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
+                android:maxLength="15"
                 android:paddingHorizontal="3dp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
@@ -40,6 +42,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="Android Developer"/>
             <TextView
+                android:id="@+id/recyc_rec_comnname"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
@@ -48,15 +51,17 @@
                 android:text="Facebook"/>
 
         </LinearLayout>
+
         <TextView
+            android:id="@+id/recyc_rec_Salary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$16000/year"
-            android:layout_marginVertical="10dp"
             android:layout_below="@id/linlyt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="10dp"
+            android:text="$16000/year"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
 <!--    <ImageView-->

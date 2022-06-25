@@ -3,6 +3,7 @@ package com.rejointech.jobber.Utils;
 public class Constants {
     public static final int SPLASH_TIMEOUT=10;
     public static final int URL_TIMEOUT = 20;
+    public static String bearer = "Bearer ";
     public static String LOG = "###-----------LOG IS HEre BIG ONE-------------------###############";
     public static int noofFeaturedJobsonHomesc=3;
 
@@ -12,6 +13,7 @@ public class Constants {
     public static final String signupurl=versioning+"auth/signup";
     public static final String loginurl=versioning+"auth/login";
     public static final String featuredJobsurl=versioning+"jobs/featured";
+    public static final String recommendedJobsurl=versioning+"jobs/recommended";
     public static final String allJobsurl=versioning+"jobs/";
 
     //SIGNUPBODY

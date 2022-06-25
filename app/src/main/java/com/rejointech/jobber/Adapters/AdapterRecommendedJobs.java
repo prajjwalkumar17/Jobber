@@ -12,33 +12,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejointech.jobber.R;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomePopularOnClick;
+import com.rejointech.jobber.RecyclerClickListeners.RecylerHomeRecommendedRecommendedOnClick;
 import com.rejointech.jobber.Utils.CommonMethods;
 import com.rejointech.jobber.Utils.Constants;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdapterpopularJobs extends RecyclerView.Adapter<AdapterpopularJobs.recycler> {
+public class AdapterRecommendedJobs extends RecyclerView.Adapter<AdapterRecommendedJobs.recycler> {
     JSONObject object;
     Activity myactivity;
     Context thisContext;
-    RecyclerHomePopularOnClick recyclerHomePopularOnClick;
+     RecylerHomeRecommendedRecommendedOnClick recylerHomeRecommendedRecommendedOnClick;
     int length;
 
-    public AdapterpopularJobs(JSONObject object, Activity myactivity, Context thisContext, RecyclerHomePopularOnClick recyclerHomePopularOnClick) {
+    public AdapterRecommendedJobs(JSONObject object, Activity myactivity, Context thisContext, RecylerHomeRecommendedRecommendedOnClick recylerHomeRecommendedRecommendedOnClick) {
         this.object = object;
         this.myactivity = myactivity;
         this.thisContext = thisContext;
-        this.recyclerHomePopularOnClick = recyclerHomePopularOnClick;
+        this.recylerHomeRecommendedRecommendedOnClick = recylerHomeRecommendedRecommendedOnClick;
     }
 
     @NonNull
     @Override
     public recycler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_popular,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_home_recommended,parent,false);
         return new recycler(view);
     }
 
@@ -50,12 +50,13 @@ public class AdapterpopularJobs extends RecyclerView.Adapter<AdapterpopularJobs.
             e.printStackTrace();
         }
     }
+
     private void parseAndSetData(int position, recycler holder) {
         String status=object.optString(myactivity.getString(R.string.JOBSfeaturedJob_status));
         String results=object.optString(myactivity.getString(R.string.JOBSfeaturedJob_noofresults));
-        JSONObject data=object.optJSONObject("data");
+        CommonMethods.LOGthesite(Constants.LOG,results);
         if (Integer.parseInt(results)>0){
-            JSONArray featuredjobsarray = data.optJSONArray("allJobs");
+            JSONArray featuredjobsarray = object.optJSONArray("recommendedJobs");
             JSONObject realres = featuredjobsarray.optJSONObject(position);
             String Company_name = realres.optString(thisContext.getString(R.string.JOBSfeaturedJob_compname));
             String Location = realres.optString(thisContext.getString(R.string.JOBSfeaturedJob_loc));
@@ -73,34 +74,32 @@ public class AdapterpopularJobs extends RecyclerView.Adapter<AdapterpopularJobs.
             String Total_Applicants = realres.optString("Total_Applicants");
             String Perks = realres.optString("Perks");
             String Featured = realres.optString("Featured");*/
-            holder.recyc_popu_companyname.setText(Company_name);
-            holder.recyc_popu_jobname.setText(Job_role);
-            holder.recyc_popu_location.setText(Location);
-            holder.recyc_popu_salary.setText(Salary+"/years");
+            holder.recyc_rec_comnname.setText(Company_name);
+            holder.recyc_rec_jobRole.setText(Job_role);
+            holder.recyc_rec_Salary.setText(Salary);
         }
     }
 
     @Override
     public int getItemCount() {
-        length = object.optJSONObject("data").optJSONArray("allJobs").length();
+        length= object.optJSONArray("recommendedJobs").length();
         return length;
     }
 
-    public class recycler extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView recyc_popu_jobname,recyc_popu_companyname,recyc_popu_salary,recyc_popu_location;
-        private CircleImageView rec_rec_img;
+    public class recycler extends RecyclerView.ViewHolder {
+        TextView recyc_rec_jobRole,recyc_rec_comnname,recyc_rec_Salary;
+        CircleImageView rec_rec_img;
         public recycler(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
-            recyc_popu_jobname=itemView.findViewById(R.id.recyc_popu_jobname);
-            recyc_popu_companyname=itemView.findViewById(R.id.recyc_popu_companyname);
-            recyc_popu_salary=itemView.findViewById(R.id.recyc_popu_salary);
-            recyc_popu_location=itemView.findViewById(R.id.recyc_popu_location);
+            initViews(itemView);
         }
 
-        @Override
-        public void onClick(View view) {
-            recyclerHomePopularOnClick.onItemClick(itemView, getAdapterPosition(), object);
+        private void initViews(View itemView) {
+
+            rec_rec_img=itemView.findViewById(R.id.rec_rec_img);
+            recyc_rec_jobRole=itemView.findViewById(R.id.recyc_rec_jobRole);
+            recyc_rec_comnname=itemView.findViewById(R.id.recyc_rec_comnname);
+            recyc_rec_Salary=itemView.findViewById(R.id.recyc_rec_Salary);
         }
     }
 }

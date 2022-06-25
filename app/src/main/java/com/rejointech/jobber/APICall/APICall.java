@@ -64,6 +64,12 @@ public class APICall {
                 .url(url)
                 .build();
     }
+    public static Request get4recommended(String url, String userauthtoken) {
+        return new Request.Builder()
+                .header("Authorization", Constants.bearer + userauthtoken)
+                .url(url)
+                .build();
+    }
 
 }
 

@@ -86,12 +86,13 @@ public class AdapterRecommendedJobs extends RecyclerView.Adapter<AdapterRecommen
         return length;
     }
 
-    public class recycler extends RecyclerView.ViewHolder {
+    public class recycler extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView recyc_rec_jobRole,recyc_rec_comnname,recyc_rec_Salary;
         CircleImageView rec_rec_img;
         public recycler(@NonNull View itemView) {
             super(itemView);
             initViews(itemView);
+            itemView.setOnClickListener(this);
         }
 
         private void initViews(View itemView) {
@@ -100,6 +101,11 @@ public class AdapterRecommendedJobs extends RecyclerView.Adapter<AdapterRecommen
             recyc_rec_jobRole=itemView.findViewById(R.id.recyc_rec_jobRole);
             recyc_rec_comnname=itemView.findViewById(R.id.recyc_rec_comnname);
             recyc_rec_Salary=itemView.findViewById(R.id.recyc_rec_Salary);
+        }
+
+        @Override
+        public void onClick(View view) {
+            recylerHomeRecommendedRecommendedOnClick.onItemClick(itemView,getAdapterPosition(),object);
         }
     }
 }

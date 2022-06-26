@@ -54,7 +54,6 @@ public class AdapterRecommendedJobs extends RecyclerView.Adapter<AdapterRecommen
     private void parseAndSetData(int position, recycler holder) {
         String status=object.optString(myactivity.getString(R.string.JOBSfeaturedJob_status));
         String results=object.optString(myactivity.getString(R.string.JOBSfeaturedJob_noofresults));
-        CommonMethods.LOGthesite(Constants.LOG,results);
         if (Integer.parseInt(results)>0){
             JSONArray featuredjobsarray = object.optJSONArray("recommendedJobs");
             JSONObject realres = featuredjobsarray.optJSONObject(position);

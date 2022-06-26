@@ -12,4 +12,12 @@
     <string name="JOBSfeaturedJob_duration">Duration</string>
     <string name="JOBSfeaturedJob_salary">Salary</string>
     <string name="JOBSfeaturedJob_expreq">Experience_required</string>
+    <string name="JOBSfeaturedJob_aboutcom">About_company</string>
+    <string name="JOBSfeaturedJob_appdeadline">Application_deadline</string>
+    <string name="JOBSfeaturedJob_jobdesc">Job_description</string>
+    <string name="JOBSfeaturedJob_jobresposibility">Responsibilities</string>
+    <string name="JOBSfeaturedJob_openingsavail">Openings_available</string>
+    <string name="JOBSfeaturedJob_totalapplicants">Total_Applicants</string>
+    <string name="JOBSfeaturedJob_perks">Perks</string>
+    <string name="JOBSfeaturedJob_featured">Featured</string>
 </resources>

@@ -10,13 +10,11 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="5dp"
         android:background="@color/master_med"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
     <RelativeLayout
         android:id="@+id/rellay"
         android:layout_width="match_parent"
@@ -164,6 +162,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lininini"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/linlayout"
@@ -200,19 +199,54 @@
                 android:textAlignment="center" />
 
         </LinearLayout>
-    </RelativeLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginBottom="17dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rellay">
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lininini"
+            android:layout_marginTop="90dp"
+>
 
+<!--            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/rellay"-->
+
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:background="@color/Transparent"
+                app:tabTextColor="@color/Grey"
+                app:tabSelectedTextColor="@color/master_med"
+                app:tabIndicatorColor="@color/Transparent"
+                app:tabRippleColor="@color/master_med"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requirements" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_below="@id/tablayout"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -225,6 +259,7 @@
         android:background="@drawable/bot_square_smooth"
         android:fontFamily="@font/poppins_medium"
         android:text="Apply Now"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

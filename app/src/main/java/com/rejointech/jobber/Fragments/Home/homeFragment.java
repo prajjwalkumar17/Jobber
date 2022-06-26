@@ -26,6 +26,7 @@ import com.rejointech.jobber.RecyclerClickListeners.RecylerHomeRecommendedRecomm
 import com.rejointech.jobber.Utils.CommonMethods;
 import com.rejointech.jobber.Utils.Constants;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -48,6 +49,9 @@ public class homeFragment extends Fragment {
     RecylerHomeRecommendedRecommendedOnClick recylerHomeRecommendedRecommendedOnClick;
     String token;
 
+    String Company_name, Location, Job_role, Job_type, Duration, Salary, Experience_required, id,
+            About_company, Application_deadline, Job_description, Responsibilities, Openings_available,
+            Total_Applicants, Perks, Featured;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -74,6 +78,30 @@ public class homeFragment extends Fragment {
         recylerHomeRecommendedRecommendedOnClick = new RecylerHomeRecommendedRecommendedOnClick() {
             @Override
             public void onItemClick(View v, int position, JSONObject object) {
+                String status = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_status));
+                String results = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_noofresults));
+                if (Integer.parseInt(results) > 0) {
+                    JSONArray featuredjobsarray = object.optJSONArray("recommendedJobs");
+                    JSONObject realres = featuredjobsarray.optJSONObject(position);
+                    Company_name = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_compname));
+                    Location = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_loc));
+                    Job_role = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_jobROle));
+                    Job_type = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_type));
+                    Duration = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_duration));
+                    Salary = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_salary));
+                    Experience_required = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_expreq));
+                    id = realres.optString("_id");
+                    About_company = realres.optString(getString(R.string.JOBSfeaturedJob_aboutcom));
+                    Application_deadline = realres.optString(getString(R.string.JOBSfeaturedJob_appdeadline));
+                    Job_description = realres.optString(getString(R.string.JOBSfeaturedJob_jobdesc));
+                    Responsibilities = realres.optString(getString(R.string.JOBSfeaturedJob_jobresposibility));
+                    Openings_available = realres.optString(getString(R.string.JOBSfeaturedJob_openingsavail));
+                    Total_Applicants = realres.optString(getString(R.string.JOBSfeaturedJob_totalapplicants));
+                    Perks = realres.optString(getString(R.string.JOBSfeaturedJob_perks));
+                    Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
+                }
+                adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
+
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
             }
@@ -81,7 +109,7 @@ public class homeFragment extends Fragment {
     }
 
     private void setrecommendedJobs() {
-        APICall.okhttpMaster().newCall(APICall.get4recommended(APICall.urlBuilder4http(Constants.recommendedJobsurl),token)).enqueue(new Callback() {
+        APICall.okhttpMaster().newCall(APICall.get4recommended(APICall.urlBuilder4http(Constants.recommendedJobsurl), token)).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
@@ -110,6 +138,31 @@ public class homeFragment extends Fragment {
         recyclerHomePopularOnClick = new RecyclerHomePopularOnClick() {
             @Override
             public void onItemClick(View v, int position, JSONObject object) {
+                String status = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_status));
+                String results = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_noofresults));
+                JSONObject data=object.optJSONObject("data");
+                if (Integer.parseInt(results) > 0) {
+                    JSONArray featuredjobsarray = data.optJSONArray("allJobs");
+                    JSONObject realres = featuredjobsarray.optJSONObject(position);
+                    Company_name = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_compname));
+                    Location = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_loc));
+                    Job_role = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_jobROle));
+                    Job_type = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_type));
+                    Duration = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_duration));
+                    Salary = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_salary));
+                    Experience_required = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_expreq));
+                    id = realres.optString("_id");
+                    About_company = realres.optString(getString(R.string.JOBSfeaturedJob_aboutcom));
+                    Application_deadline = realres.optString(getString(R.string.JOBSfeaturedJob_appdeadline));
+                    Job_description = realres.optString(getString(R.string.JOBSfeaturedJob_jobdesc));
+                    Responsibilities = realres.optString(getString(R.string.JOBSfeaturedJob_jobresposibility));
+                    Openings_available = realres.optString(getString(R.string.JOBSfeaturedJob_openingsavail));
+                    Total_Applicants = realres.optString(getString(R.string.JOBSfeaturedJob_totalapplicants));
+                    Perks = realres.optString(getString(R.string.JOBSfeaturedJob_perks));
+                    Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
+                }
+                adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
+
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
             }
@@ -131,7 +184,7 @@ public class homeFragment extends Fragment {
                     public void run() {
                         try {
                             JSONObject myres = new JSONObject(myResponse);
-                            adapterpopularJobs = new AdapterpopularJobs(myres, getActivity(), thiscontext,recyclerHomePopularOnClick);
+                            adapterpopularJobs = new AdapterpopularJobs(myres, getActivity(), thiscontext, recyclerHomePopularOnClick);
                             popularJobsRecycler.setAdapter(adapterpopularJobs);
 
                         } catch (Exception e) {
@@ -148,10 +201,54 @@ public class homeFragment extends Fragment {
         recyclerHomeFeaturedCompleteClick = new RecyclerHomeFeaturedCompleteClick() {
             @Override
             public void onItemClick(View v, int position, JSONObject object) {
+                String status = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_status));
+                String results = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_noofresults));
+                if (Integer.parseInt(results) > 0) {
+                    JSONArray featuredjobsarray = object.optJSONArray(getActivity().getString(R.string.JOBSfeaturedJob_realarray));
+                    JSONObject realres = featuredjobsarray.optJSONObject(position);
+                    Company_name = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_compname));
+                    Location = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_loc));
+                    Job_role = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_jobROle));
+                    Job_type = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_type));
+                    Duration = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_duration));
+                    Salary = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_salary));
+                    Experience_required = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_expreq));
+                    id = realres.optString("_id");
+                    About_company = realres.optString(getString(R.string.JOBSfeaturedJob_aboutcom));
+                    Application_deadline = realres.optString(getString(R.string.JOBSfeaturedJob_appdeadline));
+                    Job_description = realres.optString(getString(R.string.JOBSfeaturedJob_jobdesc));
+                    Responsibilities = realres.optString(getString(R.string.JOBSfeaturedJob_jobresposibility));
+                    Openings_available = realres.optString(getString(R.string.JOBSfeaturedJob_openingsavail));
+                    Total_Applicants = realres.optString(getString(R.string.JOBSfeaturedJob_totalapplicants));
+                    Perks = realres.optString(getString(R.string.JOBSfeaturedJob_perks));
+                    Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
+                }
+                adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
+
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
             }
         };
+    }
+
+    private void adddataToPrefs(String company_name, String id, String job_description, String job_role,
+                                String job_type, String duration, String experience_required, String salary,
+                                String location, String about_company, String responsibilities) {
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(Constants.JDPREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constants.JDcompany_name, company_name);
+        editor.putString(Constants.JDid, id);
+        editor.putString(Constants.JDjob_description, job_description);
+        editor.putString(Constants.JDjob_role, job_role);
+        editor.putString(Constants.JDjob_type, job_type);
+        editor.putString(Constants.JDduration, duration);
+        editor.putString(Constants.JDresponsibilities, responsibilities);
+        editor.putString(Constants.JDexperience_required, experience_required);
+        editor.putString(Constants.JDsalary, salary);
+        editor.putString(Constants.JDlocation, location);
+        editor.putString(Constants.JDabout_company, about_company);
+        CommonMethods.LOGthesite(Constants.LOG,location);
+        editor.apply();
     }
 
     private void setFeaturedJobs() {

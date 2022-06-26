@@ -12,6 +12,8 @@
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/divider_lin.xml" value="0.302" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/divider_lin_hor.xml" value="0.302" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/divider_lin_ver.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_bg_jd.xml" value="0.275" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_bg_jdup.xml" value="0.275" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_defaultdp.xml" value="0.302" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_jobber.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_jobsplash1.xml" value="0.2225" />
@@ -27,7 +29,7 @@
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_bookmarks.xml" value="0.38333333333333336" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_job_desc.xml" value="0.18642350557244175" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_job_desc.xml" value="0.33" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_login.xml" value="0.3729166666666667" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_onboarding2.xml" value="0.33" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_onboarding3.xml" value="0.3729166666666667" />

@@ -147,7 +147,7 @@ public class HomeContainer extends AppCompatActivity implements
 
     @Override
     public void setToolbarInvisible() {
-        tool.setVisibility(View.INVISIBLE);
+        tool.setVisibility(View.GONE);
 
     }
 

@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rejointech.jobber.APICall.APICall;
@@ -25,6 +26,7 @@ import com.rejointech.jobber.Containers.HomeContainer;
 import com.rejointech.jobber.Decoration.DecorationForRecyclerView;
 import com.rejointech.jobber.Fragments.JobDescription.jobDescFragment;
 import com.rejointech.jobber.Fragments.allAppliedJobsFragment;
+import com.rejointech.jobber.Fragments.bookmarksFragment;
 import com.rejointech.jobber.R;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomeFeaturedCompleteClick;
 import com.rejointech.jobber.Startup.StartupContainer;
@@ -54,6 +56,7 @@ public class profileFragment extends Fragment {
     ImageView profiledp;
     AppCompatButton logoutbot;
     ImageView backbot,resumebot;
+    LinearLayout bookmarkjobs,allappjobs;
 
     String Company_name, Location, Job_role, Job_type, Duration, Salary, Experience_required, id,
             About_company, Application_deadline, Job_description, Responsibilities, Openings_available,
@@ -234,6 +237,21 @@ public class profileFragment extends Fragment {
         logoutbot=root.findViewById(R.id.logoutbot);
         backbot=root.findViewById(R.id.backbot);
         resumebot=root.findViewById(R.id.resumebot);
+        bookmarkjobs=root.findViewById(R.id.bookmarkjobs);
+        allappjobs=root.findViewById(R.id.allappjobs);
+        bookmarkjobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview,new bookmarksFragment()).addToBackStack(null).commit();
+
+            }
+        });
+        allappjobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview,new allAppliedJobsFragment()).addToBackStack(null).commit();
+            }
+        });
 
         seeallapplied.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,6 +25,7 @@ public class APICall {
         return urlBuilder.build().toString();
     }
 
+    //TODO Post requests
     public static Request post4SignUp(String url, RequestBody requestBody){
         return new Request.Builder()
                 .url(url)
@@ -54,6 +55,20 @@ public class APICall {
                 .addFormDataPart(Constants.SIGNUPBODY_PASSWORD,password)
                 .build();
     }
+    public static Request get4applyjob(String url,String userauthtoken){
+        return new Request.Builder()
+                .url(url)
+                .header("Authorization", Constants.bearer + userauthtoken)
+                .build();
+    }
+
+    public static Request bookmarkaJob(String url,String userauthtoken){
+        return new Request.Builder()
+                .url(url)
+                .header("Authorization", Constants.bearer + userauthtoken)
+                .build();
+    }
+    //TODO get requests
     public static Request get4featuredJobs(String url){
         return new Request.Builder()
                 .url(url)
@@ -67,6 +82,22 @@ public class APICall {
     public static Request get4recommended(String url, String userauthtoken) {
         return new Request.Builder()
                 .header("Authorization", Constants.bearer + userauthtoken)
+                .url(url)
+                .build();
+    }
+    public static Request get4appliedJobs(String url, String userauthtoken) {
+        return new Request.Builder()
+                .header("Authorization", Constants.bearer + userauthtoken)
+                .url(url)
+                .build();
+    }
+    public static Request get4me(String url, String userauthtoken) {
+        return new Request.Builder()
+                .header("Authorization", Constants.bearer + userauthtoken)
+                .url(url)
+                .build();
+    }    public static Request get4dp(String url) {
+        return new Request.Builder()
                 .url(url)
                 .build();
     }

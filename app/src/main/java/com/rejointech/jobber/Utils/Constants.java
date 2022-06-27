@@ -15,6 +15,12 @@ public class Constants {
     public static final String featuredJobsurl=versioning+"jobs/featured";
     public static final String recommendedJobsurl=versioning+"jobs/recommended";
     public static final String allJobsurl=versioning+"jobs/";
+    public static final String dpurl=baseurl+"ProfilePics/";
+    public static String appliedJobs=versioning+"users/appliedJobs";
+    public static String bookmarkedjobs=versioning+"jobs/myBookmarks";
+    public static String applytoJob=versioning+"jobs/apply/";
+    public static String bookmarktheJob=versioning+"jobs/bookmark/";
+    public static String getme=versioning+"users/me";
 
     //SIGNUPBODY
     public static final String SIGNUPBODY_NAME = "Name";
@@ -37,6 +43,14 @@ public class Constants {
     public static final String JDcompany_name="company_name";
     public static final String JDlocation="JDlocation";
     public static final String JDabout_company="JDabout_company";
-
     public static String JDresponsibilities="JDresponsibilities";
+
+
+    public static final String PROFILEPREFS = "PROFILEPREFS";
+    public static String PROFILEemail="PROFILEemail";
+    public static String PROFILEname="PROFILEname";
+    public static String PROFILEcurrent_designation="PROFILEcurrent_designation";
+    public static String PROFILEdp="PROFILEdp";
+    public static String PROFILEresume="PROFILEresume";
+
 }

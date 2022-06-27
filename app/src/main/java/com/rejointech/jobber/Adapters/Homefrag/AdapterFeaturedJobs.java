@@ -1,4 +1,4 @@
-package com.rejointech.jobber.Adapters;
+package com.rejointech.jobber.Adapters.Homefrag;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejointech.jobber.R;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomeFeaturedCompleteClick;
-import com.rejointech.jobber.Utils.CommonMethods;
 import com.rejointech.jobber.Utils.Constants;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AdapterFeaturedJobs extends RecyclerView.Adapter<AdapterFeaturedJobs.recycler> {

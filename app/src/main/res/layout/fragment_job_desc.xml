@@ -244,8 +244,8 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
-                android:layout_below="@id/tablayout"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_below="@id/tablayout" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -254,7 +254,7 @@
         android:layout_width="match_parent"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="20dp"
-        android:elevation="3dp"
+        android:elevation="8dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bot_square_smooth"
         android:fontFamily="@font/poppins_medium"

@@ -12,19 +12,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.rejointech.jobber.APICall.APICall;
-import com.rejointech.jobber.Adapters.AdapterFeaturedJobs;
-import com.rejointech.jobber.Adapters.AdapterRecommendedJobs;
-import com.rejointech.jobber.Adapters.AdapterpopularJobs;
+import com.rejointech.jobber.Adapters.Homefrag.AdapterFeaturedJobs;
+import com.rejointech.jobber.Adapters.Homefrag.AdapterRecommendedJobs;
+import com.rejointech.jobber.Adapters.Homefrag.AdapterpopularJobs;
+import com.rejointech.jobber.Containers.HomeContainer;
 import com.rejointech.jobber.Decoration.DecorationForRecyclerView;
 import com.rejointech.jobber.Fragments.JobDescription.jobDescFragment;
+import com.rejointech.jobber.Fragments.Profile.profileFragment;
 import com.rejointech.jobber.R;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomeFeaturedCompleteClick;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomePopularOnClick;
 import com.rejointech.jobber.RecyclerClickListeners.RecylerHomeRecommendedRecommendedOnClick;
 import com.rejointech.jobber.Utils.CommonMethods;
 import com.rejointech.jobber.Utils.Constants;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -48,6 +52,7 @@ public class homeFragment extends Fragment {
     RecyclerHomePopularOnClick recyclerHomePopularOnClick;
     RecylerHomeRecommendedRecommendedOnClick recylerHomeRecommendedRecommendedOnClick;
     String token;
+    ImageView nav_dp;
 
     String Company_name, Location, Job_role, Job_type, Duration, Salary, Experience_required, id,
             About_company, Application_deadline, Job_description, Responsibilities, Openings_available,
@@ -64,6 +69,7 @@ public class homeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        initLayout();
         initViews(root);
         setFeaturedJobs();
         featuredOnClicks();
@@ -72,6 +78,12 @@ public class homeFragment extends Fragment {
         setrecommendedJobs();
         recommendedJobsOnClicks();
         return root;
+    }
+
+    private void initLayout() {
+        ((HomeContainer) getActivity()).setfabvisible();
+        ((HomeContainer) getActivity()).setToolbarVisible();
+        ((HomeContainer) getActivity()).setbotVisible();
     }
 
     private void recommendedJobsOnClicks() {
@@ -101,7 +113,6 @@ public class homeFragment extends Fragment {
                     Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
                 }
                 adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
-
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
             }
@@ -283,15 +294,29 @@ public class homeFragment extends Fragment {
         SharedPreferences sharedPreferences = thiscontext.getSharedPreferences(Constants.TOKENPREF, Context.MODE_PRIVATE);
         token = sharedPreferences.getString(Constants.TOKEN, "No data found!!!");
         featuredJobsRecycler = root.findViewById(R.id.featuredJobsRecycler);
-        popularJobsRecycler = root.findViewById(R.id.popularJobsRecycler);
-        recommendedJobsRecycler = root.findViewById(R.id.recommendedJobsRecycler);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(thiscontext, 1, GridLayoutManager.HORIZONTAL, false);
+        featuredJobsRecycler.setLayoutManager(gridLayoutManager);
+        featuredJobsRecycler.addItemDecoration(new DecorationForRecyclerView(thiscontext, R.dimen.dp_2));
+        popularJobsRecycler = root.findViewById(R.id.popularJobsRecycler);
+        SharedPreferences sharedPreferences1 = thiscontext.getSharedPreferences(Constants.PROFILEPREFS, Context.MODE_PRIVATE);
+        String dp = sharedPreferences1.getString(Constants.PROFILEdp, "No data found!!!");
+        String url=Constants.dpurl+dp;
+        nav_dp= root.findViewById(R.id.profiledp);
+        Picasso.get()
+                .load(url)
+                .error(R.drawable.defaultdp)
+                .into(nav_dp);
+        nav_dp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new profileFragment()).addToBackStack(null).commit();
+            }
+        });
+        recommendedJobsRecycler = root.findViewById(R.id.recommendedJobsRecycler);
         GridLayoutManager gridLayoutManagerrec = new GridLayoutManager(thiscontext, 1, GridLayoutManager.HORIZONTAL, false);
         GridLayoutManager gridLayoutManagerpopular = new GridLayoutManager(thiscontext, 1, GridLayoutManager.VERTICAL, false);
-        featuredJobsRecycler.setLayoutManager(gridLayoutManager);
         recommendedJobsRecycler.setLayoutManager(gridLayoutManagerrec);
         popularJobsRecycler.setLayoutManager(gridLayoutManagerpopular);
-        featuredJobsRecycler.addItemDecoration(new DecorationForRecyclerView(thiscontext, R.dimen.dp_2));
         recommendedJobsRecycler.addItemDecoration(new DecorationForRecyclerView(thiscontext, R.dimen.dp_2));
         popularJobsRecycler.addItemDecoration(new DecorationForRecyclerView(thiscontext, R.dimen.dp_2));
     }

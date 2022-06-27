@@ -4,25 +4,52 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2225" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/bg_curved_light.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/bg_search.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/bg_squared.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/bot_icon_tint_selector.xml" value="0.302" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/bot_square_smooth.xml" value="0.209" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/divider_lin.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/divider_lin_hor.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/divider_lin_ver.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_bg_jd.xml" value="0.275" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_bg_jdup.xml" value="0.275" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_defaultdp.xml" value="0.302" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_jobber.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_jobsplash1.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/ic_splash_frame.xml" value="0.2225" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/mk_recycler.xml" value="0.302" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/nav_icon_tint_selector.xml" value="0.302" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/outline_square_grey.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/txt_jobber1.xml" value="0.2225" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/drawable/txt_welcome.xml" value="0.2225" />
-        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_home.xml" value="0.38333333333333336" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/activity_splash.xml" value="0.33" />
-        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_home.xml" value="0.38333333333333336" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_bookmarks.xml" value="0.38333333333333336" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_job_desc.xml" value="0.22" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_login.xml" value="0.3729166666666667" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_main.xml" value="0.18819655521783182" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_onboarding2.xml" value="0.33" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_onboarding3.xml" value="0.3729166666666667" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_signupragment.xml" value="0.33" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_splash.xml" value="0.25" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_splash1.xml" value="0.24947916666666667" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_tab_requirement.xml" value="0.18819655521783182" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_tababout.xml" value="0.18135764944275581" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/fragment_tabdescription.xml" value="0.18819655521783182" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/hometoolbar.xml" value="0.38229166666666664" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/nav_header.xml" value="0.3145299145299145" />
         <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/oboarding1.xml" value="0.33" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/recycler_featured.xml" value="0.38229166666666664" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/recycler_home_recommended.xml" value="0.38229166666666664" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/recycler_popular.xml" value="0.38229166666666664" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/layout/searchbar.xml" value="0.38229166666666664" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/menu/botnav_menu.xml" value="0.38333333333333336" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/menu/nav_menu.xml" value="0.38333333333333336" />
+        <entry key="..\:/PROJECTS/Android/Jobber/app/src/main/res/menu/navmenu.xml" value="0.38333333333333336" />
       </map>
     </option>
   </component>
@@ -31,5 +58,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

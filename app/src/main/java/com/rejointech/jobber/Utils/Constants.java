@@ -16,6 +16,7 @@ public class Constants {
     public static final String recommendedJobsurl=versioning+"jobs/recommended";
     public static final String allJobsurl=versioning+"jobs/";
     public static final String dpurl=baseurl+"ProfilePics/";
+    public static final String resumeurl=baseurl+"Resumes/";
     public static String appliedJobs=versioning+"users/appliedJobs";
     public static String bookmarkedjobs=versioning+"jobs/myBookmarks";
     public static String applytoJob=versioning+"jobs/apply/";

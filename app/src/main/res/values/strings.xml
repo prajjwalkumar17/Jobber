@@ -20,4 +20,8 @@
     <string name="JOBSfeaturedJob_totalapplicants">Total_Applicants</string>
     <string name="JOBSfeaturedJob_perks">Perks</string>
     <string name="JOBSfeaturedJob_featured">Featured</string>
+    <string name="jobapptoast">Application for job in progress</string>
+    <string name="JobAppSuccToast">Job application successful!! Check Profile</string>
+    <string name="BookmarkJobsuccToast">Bookmarked the job</string>
+    <string name="Bookmarkingtoast">Bookmarking the job</string>
 </resources>

@@ -76,11 +76,16 @@ public class loginFragment extends Fragment {
                                 public void run() {
                                     try {
                                         JSONObject myres = new JSONObject(myResponse);
-                                        String token = myres.getString("token").toString();
-                                        savedataToPrefs(token);
-                                        CommonMethods.LOGthesite(Constants.LOG, token);
+                                        String status=myres.optString("status");
+                                        String msg=myres.optString("message");
+                                        if(status.equals("fail")){
+                                            CommonMethods.DisplayLongTOAST(thisContext,msg);
+                                        }else {
+                                            String token = myres.getString("token").toString();
+                                            savedataToPrefs(token);
+                                        }
                                     } catch (Exception e) {
-
+                                        CommonMethods.DisplayLongTOAST(thisContext,e.getMessage());
                                     }
                                 }
                             });

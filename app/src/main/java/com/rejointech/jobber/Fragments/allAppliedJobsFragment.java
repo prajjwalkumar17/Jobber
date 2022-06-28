@@ -15,17 +15,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.rejointech.jobber.APICall.APICall;
+import com.rejointech.jobber.Adapters.AdapterAllApliedJobs;
+import com.rejointech.jobber.Adapters.AdapterAppliedJobs;
 import com.rejointech.jobber.Adapters.AdapterBookmarkedjobs;
-import com.rejointech.jobber.Adapters.Homefrag.AdapterFeaturedJobs;
-import com.rejointech.jobber.Adapters.Homefrag.AdapterRecommendedJobs;
-import com.rejointech.jobber.Adapters.Homefrag.AdapterpopularJobs;
 import com.rejointech.jobber.Containers.HomeContainer;
 import com.rejointech.jobber.Decoration.DecorationForRecyclerView;
 import com.rejointech.jobber.Fragments.JobDescription.jobDescFragment;
 import com.rejointech.jobber.R;
-import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomeFeaturedCompleteClick;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomePopularOnClick;
-import com.rejointech.jobber.RecyclerClickListeners.RecylerHomeRecommendedRecommendedOnClick;
 import com.rejointech.jobber.Utils.CommonMethods;
 import com.rejointech.jobber.Utils.Constants;
 
@@ -33,18 +30,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 
-public class bookmarksFragment extends Fragment {
-
+public class allAppliedJobsFragment extends Fragment {
     RecyclerView bookmarkedjobs;
     ImageView backbot;
     Context thiscontext;
-    AdapterBookmarkedjobs adapterBookmarkedjobs;
+    AdapterAllApliedJobs adapterBookmarkedjobs;
     RecyclerHomePopularOnClick recyclerHomePopularOnClick;
     String token;
     String Company_name, Location, Job_role, Job_type, Duration, Salary, Experience_required, id,
@@ -59,22 +56,22 @@ public class bookmarksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=inflater.inflate(R.layout.fragment_bookmarks, container, false);
+        View root=inflater.inflate(R.layout.fragment_all_applied_jobs, container, false);
         initLayout();
         initViews(root);
         setbookmarkedJobs();
         bookmarkedjobsOnClicks();
         return root;
     }
-
     private void bookmarkedjobsOnClicks() {
         recyclerHomePopularOnClick = new RecyclerHomePopularOnClick() {
             @Override
             public void onItemClick(View v, int position, JSONObject object) {
                 String status = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_status));
                 String results=object.optString(getString(R.string.JOBSfeaturedJob_noofresults));
-                if (Integer.parseInt(results)>0){
-                    JSONArray featuredjobsarray = object.optJSONArray("bookmarks");
+                JSONObject data = object.optJSONObject("data");
+                if (Integer.parseInt(results) > 0) {
+                    JSONArray featuredjobsarray = data.optJSONArray("jobsApplied");
                     JSONObject realres = featuredjobsarray.optJSONObject(position);
                     Company_name = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_compname));
                     Location = realres.optString(thiscontext.getString(R.string.JOBSfeaturedJob_loc));
@@ -102,7 +99,7 @@ public class bookmarksFragment extends Fragment {
 
 
     private void setbookmarkedJobs() {
-        APICall.okhttpMaster().newCall(APICall.get4recommended(APICall.urlBuilder4http(Constants.bookmarkedjobs), token)).enqueue(new Callback() {
+        APICall.okhttpMaster().newCall(APICall.get4recommended(APICall.urlBuilder4http(Constants.appliedJobs), token)).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
@@ -117,7 +114,7 @@ public class bookmarksFragment extends Fragment {
                         public void run() {
                             try {
                                 JSONObject myres = new JSONObject(myResponse);
-                                adapterBookmarkedjobs = new AdapterBookmarkedjobs(myres, getActivity(), thiscontext, recyclerHomePopularOnClick);
+                                adapterBookmarkedjobs = new AdapterAllApliedJobs(myres, getActivity(), thiscontext, recyclerHomePopularOnClick);
                                 bookmarkedjobs.setAdapter(adapterBookmarkedjobs);
                             } catch (Exception e) {
                                 CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
@@ -164,8 +161,8 @@ public class bookmarksFragment extends Fragment {
     }
 
     private void initLayout() {
-        ((HomeContainer) getActivity()).setfabinvisible();
-        ((HomeContainer) getActivity()).setToolbarInvisible();
-        ((HomeContainer) getActivity()).setbotVisible();
+        ((HomeContainer) requireActivity()).setfabinvisible();
+        ((HomeContainer) requireActivity()).setToolbarInvisible();
+        ((HomeContainer) requireActivity()).setbotVisible();
     }
 }

@@ -1,7 +1,7 @@
 package com.rejointech.jobber.Utils;
 
 public class Constants {
-    public static final int SPLASH_TIMEOUT=10;
+    public static final int SPLASH_TIMEOUT=3000;
     public static final int URL_TIMEOUT = 20;
     public static String bearer = "Bearer ";
     public static String LOG = "###-----------LOG IS HEre BIG ONE-------------------###############";

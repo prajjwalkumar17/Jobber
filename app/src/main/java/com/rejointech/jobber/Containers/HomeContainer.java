@@ -122,7 +122,6 @@ public class HomeContainer extends AppCompatActivity implements
         editor.putString(Constants.PROFILEname, name);
         editor.putString(Constants.PROFILEemail, email);
         editor.putString(Constants.PROFILEcurrent_designation, current_designation);
-        CommonMethods.LOGthesite(Constants.LOG,dp);
         editor.putString(Constants.PROFILEdp, dp);
         editor.putString(Constants.PROFILEresume, resume);
         editor.apply();

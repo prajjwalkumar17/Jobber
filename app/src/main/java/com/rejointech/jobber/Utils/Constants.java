@@ -27,6 +27,7 @@ public class Constants {
     public static final String SIGNUPBODY_NAME = "Name";
     public static final String SIGNUPBODY_EMAIL = "Email";
     public static final String SIGNUPBODY_PASSWORD = "Password";
+    public static final String SIGNUPBODY_SKILLS = "Skills";
     public static final String SIGNUPBODY_CNFPASSWORD = "Password_confirm";
     public static final String SIGNUPBODY_ROLE = "Role";
     //SHAREDPREF

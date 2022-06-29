@@ -126,7 +126,6 @@ public class homeFragment extends Fragment {
         editor.putString(Constants.PROFILEname, name);
         editor.putString(Constants.PROFILEemail, email);
         editor.putString(Constants.PROFILEcurrent_designation, current_designation);
-        CommonMethods.LOGthesite(Constants.LOG, dp);
         editor.putString(Constants.PROFILEdp, dp);
         editor.putString(Constants.PROFILEresume, resume);
         editor.apply();
@@ -187,8 +186,13 @@ public class homeFragment extends Fragment {
                     public void run() {
                         try {
                             JSONObject myres = new JSONObject(myResponse);
-                            adapterRecommendedJobs = new AdapterRecommendedJobs(myres, getActivity(), thiscontext, recylerHomeRecommendedRecommendedOnClick);
-                            recommendedJobsRecycler.setAdapter(adapterRecommendedJobs);
+                            String status=myres.optString("status");
+                            if(!status.equals("fail")) {
+                                adapterRecommendedJobs = new AdapterRecommendedJobs(myres, getActivity(), thiscontext, recylerHomeRecommendedRecommendedOnClick);
+                                recommendedJobsRecycler.setAdapter(adapterRecommendedJobs);
+                            }else{
+                                CommonMethods.DisplayLongTOAST(thiscontext,"Please update your skills to view Recommended jobs");
+                            }
                         } catch (Exception e) {
                             CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
                         }
@@ -311,7 +315,6 @@ public class homeFragment extends Fragment {
         editor.putString(Constants.JDsalary, salary);
         editor.putString(Constants.JDlocation, location);
         editor.putString(Constants.JDabout_company, about_company);
-        CommonMethods.LOGthesite(Constants.LOG, location);
         editor.apply();
     }
 

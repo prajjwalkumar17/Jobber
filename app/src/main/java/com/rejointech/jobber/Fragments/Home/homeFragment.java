@@ -71,14 +71,66 @@ public class homeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initLayout();
         initViews(root);
+        requests();
+        return root;
+    }
+
+    private void requests() {
+        getme();
         setFeaturedJobs();
         featuredOnClicks();
         setpopularJobs();
         popularjobsOnClicks();
         setrecommendedJobs();
         recommendedJobsOnClicks();
-        return root;
     }
+
+    private void getme() {
+        APICall.okhttpMaster().newCall(APICall.get4me(APICall.urlBuilder4http(Constants.getme), token)).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                final String myResponse = response.body().string();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject myres = new JSONObject(myResponse);
+                            JSONObject data = myres.optJSONObject("data");
+                            JSONObject redata = data.optJSONObject("data");
+                            String name = redata.optString("Name");
+                            String Email = redata.optString("Email");
+                            String Current_designation = redata.optString("Current_designation");
+                            String dp = redata.optString("Photo");
+                            String Resume = redata.optString("Resume");
+                            addDatatoPrefs(name, Email, Current_designation, dp, Resume);
+
+                        } catch (Exception e) {
+                            CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
+
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
+    private void addDatatoPrefs(String name, String email, String current_designation, String dp, String resume) {
+        SharedPreferences sharedPreferences = thiscontext.getSharedPreferences(Constants.PROFILEPREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constants.PROFILEname, name);
+        editor.putString(Constants.PROFILEemail, email);
+        editor.putString(Constants.PROFILEcurrent_designation, current_designation);
+        editor.putString(Constants.PROFILEdp, dp);
+        editor.putString(Constants.PROFILEresume, resume);
+        editor.apply();
+    }
+
 
     private void initLayout() {
         ((HomeContainer) getActivity()).setfabvisible();
@@ -112,7 +164,7 @@ public class homeFragment extends Fragment {
                     Perks = realres.optString(getString(R.string.JOBSfeaturedJob_perks));
                     Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
                 }
-                adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
+                adddataToPrefs(Company_name, id, Job_description, Job_role, Job_type, Duration, Experience_required, Salary, Location, About_company, Responsibilities);
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
             }
@@ -134,8 +186,13 @@ public class homeFragment extends Fragment {
                     public void run() {
                         try {
                             JSONObject myres = new JSONObject(myResponse);
-                            adapterRecommendedJobs = new AdapterRecommendedJobs(myres, getActivity(), thiscontext, recylerHomeRecommendedRecommendedOnClick);
-                            recommendedJobsRecycler.setAdapter(adapterRecommendedJobs);
+                            String status=myres.optString("status");
+                            if(!status.equals("fail")) {
+                                adapterRecommendedJobs = new AdapterRecommendedJobs(myres, getActivity(), thiscontext, recylerHomeRecommendedRecommendedOnClick);
+                                recommendedJobsRecycler.setAdapter(adapterRecommendedJobs);
+                            }else{
+                                CommonMethods.DisplayLongTOAST(thiscontext,"Please update your skills to view Recommended jobs");
+                            }
                         } catch (Exception e) {
                             CommonMethods.LOGthesite(Constants.LOG, e.getMessage());
                         }
@@ -151,7 +208,7 @@ public class homeFragment extends Fragment {
             public void onItemClick(View v, int position, JSONObject object) {
                 String status = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_status));
                 String results = object.optString(getActivity().getString(R.string.JOBSfeaturedJob_noofresults));
-                JSONObject data=object.optJSONObject("data");
+                JSONObject data = object.optJSONObject("data");
                 if (Integer.parseInt(results) > 0) {
                     JSONArray featuredjobsarray = data.optJSONArray("allJobs");
                     JSONObject realres = featuredjobsarray.optJSONObject(position);
@@ -172,7 +229,7 @@ public class homeFragment extends Fragment {
                     Perks = realres.optString(getString(R.string.JOBSfeaturedJob_perks));
                     Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
                 }
-                adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
+                adddataToPrefs(Company_name, id, Job_description, Job_role, Job_type, Duration, Experience_required, Salary, Location, About_company, Responsibilities);
 
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
@@ -234,7 +291,7 @@ public class homeFragment extends Fragment {
                     Perks = realres.optString(getString(R.string.JOBSfeaturedJob_perks));
                     Featured = realres.optString(getString(R.string.JOBSfeaturedJob_featured));
                 }
-                adddataToPrefs(Company_name,id,Job_description,Job_role,Job_type,Duration,Experience_required,Salary,Location,About_company,Responsibilities);
+                adddataToPrefs(Company_name, id, Job_description, Job_role, Job_type, Duration, Experience_required, Salary, Location, About_company, Responsibilities);
 
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview, new jobDescFragment()).addToBackStack(null).commit();
 
@@ -258,7 +315,6 @@ public class homeFragment extends Fragment {
         editor.putString(Constants.JDsalary, salary);
         editor.putString(Constants.JDlocation, location);
         editor.putString(Constants.JDabout_company, about_company);
-        CommonMethods.LOGthesite(Constants.LOG,location);
         editor.apply();
     }
 
@@ -300,8 +356,8 @@ public class homeFragment extends Fragment {
         popularJobsRecycler = root.findViewById(R.id.popularJobsRecycler);
         SharedPreferences sharedPreferences1 = thiscontext.getSharedPreferences(Constants.PROFILEPREFS, Context.MODE_PRIVATE);
         String dp = sharedPreferences1.getString(Constants.PROFILEdp, "No data found!!!");
-        String url=Constants.dpurl+dp;
-        nav_dp= root.findViewById(R.id.profiledp);
+        String url = Constants.dpurl + dp;
+        nav_dp = root.findViewById(R.id.profiledp);
         Picasso.get()
                 .load(url)
                 .error(R.drawable.defaultdp)

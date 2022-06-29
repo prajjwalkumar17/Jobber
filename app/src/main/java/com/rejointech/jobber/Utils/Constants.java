@@ -1,7 +1,7 @@
 package com.rejointech.jobber.Utils;
 
 public class Constants {
-    public static final int SPLASH_TIMEOUT=10;
+    public static final int SPLASH_TIMEOUT=3000;
     public static final int URL_TIMEOUT = 20;
     public static String bearer = "Bearer ";
     public static String LOG = "###-----------LOG IS HEre BIG ONE-------------------###############";
@@ -16,6 +16,7 @@ public class Constants {
     public static final String recommendedJobsurl=versioning+"jobs/recommended";
     public static final String allJobsurl=versioning+"jobs/";
     public static final String dpurl=baseurl+"ProfilePics/";
+    public static final String resumeurl=baseurl+"Resumes/";
     public static String appliedJobs=versioning+"users/appliedJobs";
     public static String bookmarkedjobs=versioning+"jobs/myBookmarks";
     public static String applytoJob=versioning+"jobs/apply/";
@@ -26,6 +27,7 @@ public class Constants {
     public static final String SIGNUPBODY_NAME = "Name";
     public static final String SIGNUPBODY_EMAIL = "Email";
     public static final String SIGNUPBODY_PASSWORD = "Password";
+    public static final String SIGNUPBODY_SKILLS = "Skills";
     public static final String SIGNUPBODY_CNFPASSWORD = "Password_confirm";
     public static final String SIGNUPBODY_ROLE = "Role";
     //SHAREDPREF

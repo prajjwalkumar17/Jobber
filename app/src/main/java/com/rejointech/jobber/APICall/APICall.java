@@ -32,15 +32,21 @@ public class APICall {
                 .post(requestBody)
                 .build();
     }
-    public static RequestBody signupBody(String name,String email,String password,String cnfpassword,String role){
-        return  new MultipartBody.Builder()
+    public static RequestBody signupBody(String name,String email,String password,String cnfpassword,String role,String... skills){
+        MultipartBody.Builder multipartBody=  new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart(Constants.SIGNUPBODY_NAME,name)
                 .addFormDataPart(Constants.SIGNUPBODY_EMAIL,email)
                 .addFormDataPart(Constants.SIGNUPBODY_PASSWORD,password)
                 .addFormDataPart(Constants.SIGNUPBODY_CNFPASSWORD,cnfpassword)
-                .addFormDataPart(Constants.SIGNUPBODY_ROLE,role)
-                .build();
+                .addFormDataPart(Constants.SIGNUPBODY_ROLE,role);
+        for(String i:skills)
+            multipartBody.addFormDataPart(Constants.SIGNUPBODY_SKILLS,i);
+            return multipartBody.build();
+
+
+
+//
     }
     public static Request post4login(String url, RequestBody requestBody){
         return new Request.Builder()

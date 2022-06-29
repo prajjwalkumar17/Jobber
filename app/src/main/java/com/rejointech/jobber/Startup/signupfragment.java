@@ -31,7 +31,7 @@ import okhttp3.Response;
 
 public class signupfragment extends Fragment {
 
-    AppCompatEditText name,email,password,cnfpassword,role;
+    AppCompatEditText name,email,password,cnfpassword,role,skills;
     TextView bot_login;
     AppCompatButton registerbot;
     Context thiscontext;
@@ -55,6 +55,7 @@ public class signupfragment extends Fragment {
         password=root.findViewById(R.id.password);
         registerbot=root.findViewById(R.id.loginbot);
         role=root.findViewById(R.id.role);
+        skills=root.findViewById(R.id.skills);
         cnfpassword=root.findViewById(R.id.cnfpassword);
 
         //buttons
@@ -64,6 +65,7 @@ public class signupfragment extends Fragment {
                 String Name = name.getText().toString();
                 String Email = email.getText().toString();
                 String Role = role.getText().toString();
+                String[] Skills = skills.getText().toString().split(",");
                 String PasswordConfirmed = cnfpassword.getText().toString();
                 String Password = password.getText().toString();
 
@@ -71,13 +73,14 @@ public class signupfragment extends Fragment {
                 if (Name.length() == 0 ||
                         Email.length() == 0 ||
                         Password.length() == 0 ||
+                        Skills.length==0||
                         PasswordConfirmed.length() == 0 ||
                         !Password.equals(PasswordConfirmed)) {
                     CommonMethods.DisplayShortTOAST(thiscontext, "Check the filled details Properly");
 
                 } else {
                     CommonMethods.DisplayShortTOAST(thiscontext, "Signup in Progress");
-                    registerUser(Name,Email,Role,Password,PasswordConfirmed);
+                    registerUser(Name,Email,Role,Password,PasswordConfirmed,Skills);
 
                 }
             }
@@ -91,10 +94,10 @@ public class signupfragment extends Fragment {
         return root;
     }
 
-    private void registerUser(String name, String email, String role, String password, String passwordConfirmed) {
+    private void registerUser(String name, String email, String role, String password, String passwordConfirmed,String... skills) {
          APICall.okhttpMaster().newCall(
                 APICall.post4SignUp(APICall.urlBuilder4http(Constants.signupurl),
-                        APICall.signupBody(name, email, password, passwordConfirmed,role))
+                        APICall.signupBody(name, email, password, passwordConfirmed,role,skills))
         ).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {

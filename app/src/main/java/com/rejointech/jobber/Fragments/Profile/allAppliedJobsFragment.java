@@ -1,4 +1,4 @@
-package com.rejointech.jobber.Fragments;
+package com.rejointech.jobber.Fragments.Profile;
 
 import android.content.Context;
 import android.content.SharedPreferences;

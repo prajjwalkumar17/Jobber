@@ -25,7 +25,6 @@ import com.rejointech.jobber.Adapters.AdapterAppliedJobs;
 import com.rejointech.jobber.Containers.HomeContainer;
 import com.rejointech.jobber.Decoration.DecorationForRecyclerView;
 import com.rejointech.jobber.Fragments.JobDescription.jobDescFragment;
-import com.rejointech.jobber.Fragments.allAppliedJobsFragment;
 import com.rejointech.jobber.Fragments.bookmarksFragment;
 import com.rejointech.jobber.R;
 import com.rejointech.jobber.RecyclerClickListeners.RecyclerHomeFeaturedCompleteClick;
@@ -39,7 +38,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -56,7 +54,7 @@ public class profileFragment extends Fragment {
     ImageView profiledp;
     AppCompatButton logoutbot;
     ImageView backbot,resumebot;
-    LinearLayout bookmarkjobs,allappjobs;
+    LinearLayout bookmarkjobs,allappjobs,linearLayout8;
 
     String Company_name, Location, Job_role, Job_type, Duration, Salary, Experience_required, id,
             About_company, Application_deadline, Job_description, Responsibilities, Openings_available,
@@ -102,9 +100,12 @@ public class profileFragment extends Fragment {
                                 String Email=redata.optString("Email");
                                 String Current_designation=redata.optString("Current_designation");
                                 JSONArray Skills=redata.optJSONArray("Skills");
-
+                                String    dp=redata.optString("Photo");
+                                String Resume=redata.optString("Resume");
+                                addDatatoPrefs(name,Email,Current_designation,dp,Resume);
                                 int jobsapplied=redata.getJSONArray("Jobs_applied").length();
                                 int bookmarksdata=redata.getJSONArray("Bookmarked_jobs").length();
+                                addDatatoPrefs(name,Email,Current_designation,dp,Resume);
                                 //settexts
                                 for(int i=0;i<Skills.length();i++){
                                     String skill=Skills.optString(i);
@@ -132,6 +133,18 @@ public class profileFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void addDatatoPrefs(String name, String email, String current_designation, String dp, String resume) {
+        SharedPreferences sharedPreferences =thiscontext.getSharedPreferences(Constants.PROFILEPREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constants.PROFILEname, name);
+        editor.putString(Constants.PROFILEemail, email);
+        editor.putString(Constants.PROFILEcurrent_designation, current_designation);
+        CommonMethods.LOGthesite(Constants.LOG,dp);
+        editor.putString(Constants.PROFILEdp, dp);
+        editor.putString(Constants.PROFILEresume, resume);
+        editor.apply();
     }
 
     private void initLayout() {
@@ -234,11 +247,18 @@ public class profileFragment extends Fragment {
         seeallapplied=root.findViewById(R.id.seeallapplied);
         bookmarks=root.findViewById(R.id.bookmarks);
         skiilstxt=root.findViewById(R.id.skiilstxt);
+        linearLayout8=root.findViewById(R.id.linearLayout8);
         logoutbot=root.findViewById(R.id.logoutbot);
         backbot=root.findViewById(R.id.backbot);
         resumebot=root.findViewById(R.id.resumebot);
         bookmarkjobs=root.findViewById(R.id.bookmarkjobs);
         allappjobs=root.findViewById(R.id.allappjobs);
+        linearLayout8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.maincontainerview,new resumeviewFragment()).addToBackStack(null).commit();
+            }
+        });
         bookmarkjobs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

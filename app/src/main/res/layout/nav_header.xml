@@ -39,6 +39,7 @@
             app:layout_constraintBottom_toTopOf="@+id/profilename"
      />
     </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/profilename"
         android:layout_width="wrap_content"
